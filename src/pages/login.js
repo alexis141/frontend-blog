@@ -1,76 +1,121 @@
-import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router";
+import React, { Component } from "react";
+import axios from "axios";
 
-export default function() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form refresh
+export default class Login extends Component {
+  constructor(props) {
+    super(props);
 
-    // Create data object
-    const data = {
-      email : email,
-      password : password
-    };
-
-    try {
-      // Send POST request to Flask API
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      // Handle the response
-      if (response.ok) {
-        const result = await response.json();
-        console.log(result);
-        setEmail("");
-        setPassword("");
-
-        
-
-      } else {
-        const errorData = await response.json();
-      }
-    } catch (error) {
-      console.log(error);
+    this.state = {
+      email: "",
+      password: "",
+      errorText: "",
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-    return (
-        <div>
-            <h3>Login </h3>
-            <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Email:</label>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            style={{ width: "100%", padding: "0.5rem" }}
-          />
-        </div>
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Password:</label>
-          <input
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={{ width: "100%", padding: "0.5rem" }}
-          />
-        </div>
-        <button type="submit" style={{ padding: "0.5rem 1rem" }}>
-          Submit
-        </button>
-      </form>
-        </div>
-    )
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/login",
+        {
+          email: this.state.email,
+          password: this.state.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, 
+        }
+      );
+  
+  //     console.log("Response received:", response.data);
+
+  //     if (response.data.message === "success") {
+  //       alert("Login successful!");
+  //     } else {
+  //       alert("Invalid credentials. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error during login:", error);
+  //     alert("Unable to connect to the server. Please try again later.");
+  //   }
+  // }
+
+  console.log("Response received:", response.data);
+
+  // Check the response message
+  if (response.data.message === "success") {
+    alert("Login successful!");
+    // Optionally redirect to the homepage or dashboard
+    this.props.navigate("/dashboard");
+  } else {
+    alert(response.data.error || "Invalid credentials. Please try again.");
+  }
+} catch (error) {
+  console.error("Error during login:", error);
+  alert("Unable to connect to the server. Please try again later.");
 }
+}
+
+
+//   if (response.data.status === "created") {
+//     this.props.handleSuccessfulAuth();
+//   } else {
+//     this.setState({
+//       errorText: "Wrong email or password"
+//     });
+//     this.props.handleUnsuccessfulAuth();
+//   }
+// } catch (error) {
+//   // Handle errors inside the catch block
+//   this.setState({
+//     errorText: "An error occurred"
+//   });
+//   this.props.handleUnsuccessfulAuth();
+// }
+// }
+ 
+  render() {
+    return (
+      <div>
+        <h1>LOGIN TO ACCESS YOUR DASHBOARD</h1>
+
+        <div>{this.state.errorText}</div>
+
+        <form onSubmit={this.handleSubmit}>
+          <input 
+            type="email" 
+            name="email"
+            placeholder="Your email"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+
+          <input 
+            type="password" 
+            name="password"
+            placeholder="Your password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <div>
+            <button type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
+
 

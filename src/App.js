@@ -1,68 +1,98 @@
-import React from "react";
+
+import React, { Component } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
-
-import BlogContainer from "./blog/blog-container";
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Blog from "./pages/blog";
-
 import Login from "./pages/login";
-import { useState, useEffect } from "react";
-
-// import logo from './logo.svg';
+import Auth from "./pages/auth";
+import Post from "./blog/create-post";
 import "./style/navigation.css";
 
 const root = document.getElementById("root");
 
-function App() {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      info: { name: "" }, // Initialize info state
+      loggedInStatus: "NOT_LOGGED_IN"
+    };
 
-  const [info, setInfo] = useState(
-    { name: "" }
-  );
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+    this.handleUnsuccessfulLogin = this.handleUnsuccessfulLogin.bind(this);
+  }
 
-  useEffect(() => {
-    // Using fetch to fetch the api from 
-    // flask server it will be redirected to proxy
-    fetch("/test").then((res) =>
+  handleSuccessfulLogin() {
+    this.setState({
+      loggedInStatus: "LOGGED_IN"
+    });
+  }
+
+  handleUnsuccessfulLogin() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN"
+    });
+  }
+
+  componentDidMount() {
+    // Fetch data from API when the component mounts
+    fetch("/test")
+      .then((res) =>
         res.json().then((data) => {
-            // Setting a data from api
-            setInfo({
-                name: data.name,
-            });
+          // Update the state with the fetched data
+          this.setState({
+            info: {
+              name: data.name,
+            },
+          });
         })
-    );
-}, []);
+      )
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-
-        {/* ReactDOM.createRoot(root).render(); */}
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
           <BrowserRouter>
             <div>
-              
               <NavigationContainer />
-            
+
+              <h2>{this.state.loggedInStatus}</h2>
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
-                <Route path="/login" element={<Login />} />
+                <Route 
+                  path="/login" 
+                  element={
+                    <Login
+                      handleSuccessfulLogin={this.handleSuccessfulLogin}
+                      handleUnSuccessfulLogin={this.handleUnSuccessfulLogin}
+                    />
+                  }
+                />
               </Routes>
             </div>
           </BrowserRouter>
-        
-      </header>
+        </header>
 
-      <div>
-        {/* render fetched data */}
-        <h3> { info.name } </h3>
+        <div>
+          {/* Check if info is available before rendering */}
+          {this.state.info.name ? (
+            <h3>{this.state.info.name}</h3>
+          ) : (
+            <h3>Loading...</h3>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default App;

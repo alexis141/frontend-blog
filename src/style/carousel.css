@@ -1,41 +1,13 @@
-.carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 800px;
-    overflow: hidden;
-}
-
-.carousel-image-wrapper {
+.my-carousel img {
     width: 100%;
+    height: auto;
+    max-height: 100px;
+    object-fit: cover;
+    display: block;
 }
-
-.carousel img {
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.custom-prev-button .custom-next-button {
-    cursor: pointer;
-    font-size: 24px;
-    color: black;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: none;
-    border: none;
-}
-
-.custom-prev-button {
-    left: 15px; /* Adjust position */
-}
-
-.custom-next-button {
-    right: 15px; /* Adjust position */
-}
-
-.custom-prev-button:hover .custom-next-button:hover {
-    color: gray; /* Add hover effect */
+.my-carousel {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
