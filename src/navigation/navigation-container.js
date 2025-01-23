@@ -1,15 +1,28 @@
-import React, { Component } from "react";
-import { NavLink } from "react-router";
+import React from "react";
+import axios from "axios";
+import { NavLink, useNavigate } from "react-router";
 
 import "../style/navigation.css";
 
-export default class NavigationContainer extends Component {
-    constructor() {
-        super();
-    }
+const NavigationContainer = (props) => {
+    const navigate = useNavigate();
 
-    
-    render() {
+    const handleSignOut = () => {
+        axios
+        .delete("http://127.0.0.1:8001/logout", 
+            { withCredentials: true })
+        .then(response => {
+            if (response.status === 200) {
+                props.history.push("/");
+                props.handleSuccessfulLogout();
+            }
+            return response.data;
+        })
+        .catch(error => {
+            console.log("Error signing out", error)
+        });
+    };
+ 
         return ( 
             <div className="nav-wrapper">
                 <div className="left-side">
@@ -32,20 +45,28 @@ export default class NavigationContainer extends Component {
                     </div>
                 </div>
 
-                <div className="title">
+                {/* <div className="title">
                     <div>Lexi Lou Where Are You</div>
-                </div>
-                    
+                </div> */}
+                
                 <div className="right-side">
+                    <div className="nav-link-wrapper">
                     
-                     <div className="nav-link-wrapper">
-                        <NavLink to="/login" activeClassName="nav-link-active">
-                            Login
-                        </NavLink>
-                    </div>
-                </div>               
-            </div>
-        )
-    }
-}
+                        {props.loggedInStatus === "NOT_LOGGED_IN" && (
+                <NavLink to="/login" activeClassName="nav-link-active">
+                    Login
+                </NavLink>
+                )}
 
+                        {props.loggedInStatus === "LOGGED_IN" && (
+                        <a onClick={props.handleSignOut} style={{ cursor: "pointer" }}>
+                            Sign Out
+                        </a>
+                    )}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    export default NavigationContainer;

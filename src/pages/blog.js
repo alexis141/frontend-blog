@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from "react-router";
-
+import { Link } from "react-router-dom";
 import CreatePost from "../blog/create-post";
 import '../style/blog.css';
 
-
-const BlogPage = () => {
+const Blog = ({ loggedInStatus }) => {
   return (
-    // <div style={{ fontFamily: 'Arial, sans-serif', margin: '20px' }}>
     <div className="blog-container">
       <header className="blog-header">
         <h1>My Travel and Resource Blog</h1>
@@ -16,16 +13,40 @@ const BlogPage = () => {
       <section className="resources-section">
         <h2>Resources to fly:</h2>
         <ul className="resource-list">
-            <li><Link to="https://www.skyscanner.com/">Skyscanner</Link></li>
-            <li><Link to="https://skiplagged.com/">Skiplagged</Link></li>
-            <li><Link to="https://www.travelocity.com/">Travelocity</Link></li>
-            <li><Link to="https://us.trip.com/?locale=en-us">Trip</Link></li>
+          <li>
+            <a href="https://www.skyscanner.com/" target="_blank" rel="noopener noreferrer">
+              Skyscanner
+            </a>
+          </li>
+          <li>
+            <a href="https://skiplagged.com/" target="_blank" rel="noopener noreferrer">
+              Skiplagged
+            </a>
+          </li>
+          <li>
+            <a href="https://www.travelocity.com/" target="_blank" rel="noopener noreferrer">
+              Travelocity
+            </a>
+          </li>
+          <li>
+            <a href="https://us.trip.com/?locale=en-us" target="_blank" rel="noopener noreferrer">
+              Trip
+            </a>
+          </li>
         </ul>
 
         <h2>Resources to sleep:</h2>
         <ul className="resource-list">
-            <li><Link to="https://www.hostelworld.com/">Hostelworld</Link></li>
-            <li><Link to="https://www.airbnb.com/">Airbnb</Link></li>
+          <li>
+            <a href="https://www.hostelworld.com/" target="_blank" rel="noopener noreferrer">
+              Hostelworld
+            </a>
+          </li>
+          <li>
+            <a href="https://www.airbnb.com/" target="_blank" rel="noopener noreferrer">
+              Airbnb
+            </a>
+          </li>
         </ul>
       </section>
 
@@ -41,12 +62,10 @@ const BlogPage = () => {
         </ul>
       </section>
 
-    
-      <CreatePost />
+      {/* Conditionally render CreatePost */}
+      {loggedInStatus === "LOGGED_IN" && <CreatePost />}
     </div>
   );
 };
 
-export default BlogPage;
-
-
+export default Blog;
