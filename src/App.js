@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import axios from "axios";
 
@@ -8,8 +7,6 @@ import Home from "./pages/home";
 import About from "./pages/about";
 import Blog from "./pages/blog";
 import Login from "./pages/login";
-import Auth from "./pages/auth";
-import Post from "./blog/create-post";
 import "./style/navigation.css";
 import BlogPage from "./pages/blog";
 
@@ -49,7 +46,7 @@ export default class App extends Component {
   //     loggedInStatus: "NOT_LOGGED_IN"
   //   });
   //   localStorage.setItem("isLoggedIn", false)
-  // hanlde redirect, set state, redirect conditional in render statement
+  // hanlde redirect
   // }
 
   handleSuccessfulLogout() {

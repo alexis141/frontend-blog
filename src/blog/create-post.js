@@ -44,7 +44,6 @@ const CreatePost = () => {
       <ul className="blog-list">
         {blogs.slice().reverse().map((blog, index) => (
           <li key={index} style={{ marginBottom: '10px' }}>
-             {/* <h3> Blog {index+1}</h3> */}
              <hr style={{margin: '0% 30% 20px 30%'}}></hr>
              {blog}
              <br></br>
