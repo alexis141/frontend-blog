@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import "../style/login.css";
-import loginImg from "../images/login/FullSizeRender.jpg";
+import loginImg from "../static/images/login/FullSizeRender.jpg";
 import { Navigate } from "react-router";
 
 
@@ -47,14 +47,10 @@ export default class Login extends Component {
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
-            // "Access-Control-Allow-Headers": "*",
             "Access-Control-Allow-Methods": "*",
           },
-          // withCredentials: true, 
         }
       );
-
-      // console.log("Response received:", response.data);
 
       if (response.data.message === "success") {
         alert("Login successful!");
@@ -71,10 +67,6 @@ export default class Login extends Component {
       alert("Unable to connect to the server. Please try again later.");
     }
   }
-  
-  // handleLogout = () => {
-  //   this.setState({ loggedIn: false, redirectTo: "/" });
-  // };
   
   render() {
     if (this.state.redirectTo) {

@@ -1,20 +1,20 @@
 import React from "react";
 import CreatePost from "../blog/create-post";
-import photo1 from "../images/blog/camoles.jpg";
-import photo2 from "../images/blog/indianajones.jpg";
-import photo3 from "../images/blog/reaching.jpg";
-import photo4 from "../images/blog/sunset.jpg";
-import photo5 from "../images/blog/red.jpg";
-import photo6 from "../images/blog/moterbike.JPG";
-import photo7 from "../images/blog/france.jpg";
-import photo8 from "../images/blog/belgium.jpg";
-import photo9 from "../images/blog/italy.jpg";
-import photo11 from "../images/blog/IMG_5810.PNG";
-import photo12 from "../images/blog/austria.jpg";
-import photo13 from "../images/blog/budapest.PNG";
+import photo1 from "../static/images/blog/camoles.jpg";
+import photo2 from "../static/images/blog/indianajones.jpg";
+import photo3 from "../static/images/blog/reaching.jpg";
+import photo4 from "../static/images/blog/sunset.jpg";
+import photo5 from "../static/images/blog/red.jpg";
+import photo6 from "../static/images/blog/moterbike.JPG";
+import photo7 from "../static/images/blog/france.jpg";
+import photo8 from "../static/images/blog/belgium.jpg";
+import photo9 from "../static/images/blog/italy.jpg";
+import photo11 from "../static/images/blog/IMG_5810.PNG";
+import photo12 from "../static/images/blog/austria.jpg";
+import photo13 from "../static/images/blog/budapest.PNG";
 
-import photoFly from "../images/blog/fly.jpg";
-import photoSleep from "../images/blog/sleep.jpg";
+import photoFly from "../static/images/blog/fly.jpg";
+import photoSleep from "../static/images/blog/sleep.jpg";
 
 import "../style/blog.css";
 
@@ -47,13 +47,13 @@ const profiles = [
     alt: "Photo 3",
     text: "Indonesia", },
   { img: photo5,
-    alt: "Photo 4",
+    alt: "Photo 5",
     text: "Taiwan", },
   { img: photo4,
     alt: "Photo 4",
     text: "Philippines", },
   { img: photo6,
-    alt: "Photo 4",
+    alt: "Photo 6",
     text: "Vietnam", },
 ];
 

@@ -1,9 +1,9 @@
 import React from "react";
 import "../style/layouts.css";
 
-import photo1 from "../images/about/IMG_3425.jpg";
-import photo2 from "../images/about/photo3.JPG";
-import photo3 from "../images/about/IMG_6422.jpg";
+import photo1 from "../static/images/about/IMG_3425.jpg";
+import photo2 from "../static/images/about/photo3.JPG";
+import photo3 from "../static/images/about/IMG_6422.jpg";
 
 const photos = [
     {src: photo1, alt: "Photo 1"},
