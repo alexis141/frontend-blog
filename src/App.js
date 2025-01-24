@@ -8,7 +8,7 @@ import About from "./pages/about";
 import Blog from "./pages/blog";
 import Login from "./pages/login";
 import "./style/navigation.css";
-import BlogPage from "./pages/blog";
+import "./style/media-queries.css";
 
 const root = document.getElementById("root");
 
@@ -39,15 +39,6 @@ export default class App extends Component {
     });
     localStorage.setItem("isLoggedIn", false)
   }
-
-  //CHANGE TO localstorage.clear("LOGGED_IN") / set to false
-  // handleSuccessfulLogout() {
-  //   this.setState({
-  //     loggedInStatus: "NOT_LOGGED_IN"
-  //   });
-  //   localStorage.setItem("isLoggedIn", false)
-  // hanlde redirect
-  // }
 
   handleSuccessfulLogout() {
     this.setState({ 
@@ -109,10 +100,7 @@ export default class App extends Component {
                 <Route
                 path="/blog"
                 element={<Blog loggedInStatus={this.state.loggedInStatus} />}
-                />
-                 {/* if (this.state.loggedInStatus == "Logged in ") {
-                 <Route createblog />
-                */}
+                />              
 
                 <Route 
                   path="/login" 

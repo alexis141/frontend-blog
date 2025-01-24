@@ -21,7 +21,6 @@ export default class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-
   handleSuccessNavigation() {
     this.setState({
       ["redirectTo"]: "/"
@@ -54,9 +53,6 @@ export default class Login extends Component {
 
       if (response.data.message === "success") {
         alert("Login successful!");
-        // Optionally redirect to the homepage or dashboard
-        //const navigate = useNavigate()
-        //navigate("/");
         this.props.handleSuccessfulLogin()
         this.handleSuccessNavigation()
       } else {

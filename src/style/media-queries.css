@@ -1,0 +1,23 @@
+  @media (max-width: 1024px) {
+    .profile-item {
+      width: calc(50% - 20px); 
+    }
+  
+    .resource-category {
+      flex: 1 1 100%; 
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .profile-item {
+      width: 100%; 
+    }
+  
+    .resource-text h2 {
+      font-size: 18px;
+    }
+  
+    .profile-img {
+      height: 150px;
+    }
+  }
