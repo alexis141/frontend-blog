@@ -1,5 +1,6 @@
 import React from "react";
 import CreatePost from "../blog/create-post";
+
 import photo1 from "../static/images/blog/camoles.jpg";
 import photo2 from "../static/images/blog/indianajones.jpg";
 import photo3 from "../static/images/blog/reaching.jpg";
