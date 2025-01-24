@@ -11,7 +11,7 @@ const NavigationContainer = (props) => {
         //clear loggedIn (local storage, or state wherever it's stored)
         //redirect
         axios
-        .delete("http://127.0.0.1:8001/logout", 
+        .delete("https://capstone-blog-2ee27fe14835.herokuapp.com/", 
             { withCredentials: true })
         .then(response => {
             if (response.status === 200) {

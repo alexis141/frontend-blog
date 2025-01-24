@@ -59,7 +59,7 @@ export default class App extends Component {
 
   checkLoginStatus() {
     return axios
-      .get("http://127.0.0.1:8001/logged_in", { 
+      .get("https://capstone-blog-2ee27fe14835.herokuapp.com/", { 
       withCredentials: true
     })
       .then(response => {
