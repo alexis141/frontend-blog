@@ -38,7 +38,7 @@ export default class Login extends Component {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://capstone-blog-2ee27fe14835.herokuapp.com/",
+        "https://capstone-blog-2ee27fe14835.herokuapp.com/login",
         {
           email: this.state.email,
           password: this.state.password,
