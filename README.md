@@ -8,7 +8,7 @@ Key Features:
 
 •	Dynamic Content: Responsive layout for seamless browsing across devices.
 
-•	Modern Technologies: The blog leverages [React, Vue, or relevant tech stack] for the frontend and [Node.js, Django, etc.] for backend operations
+•	Modern Technologies: The blog leverages  for the frontend and  for backend operations
 
 •	Styling: Clean, minimalistic design implemented with CSS frameworks 
 
