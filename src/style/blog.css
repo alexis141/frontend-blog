@@ -1,115 +1,112 @@
-body {
-    font-family: 'Arial, sans-serif';
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* .blog-container {
-    margin: 20px auto;
-    max-width: 800px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-  } */
-  
-  .blog-header {
-    text-align: center;
-    margin-bottom: 20px;
-    /* border-bottom: 2px solid #0077b6; */
-    background: #7a607a;
-    padding: 5px 5px;
-    border: 20px solid #75807b;
-    color: #4bc69d;
-  }
-  
-  .blog-header h1 {
-    color: black;
-    font-size: 2em;
-  }
-  
+.blog-container {
+  padding: 20px;
+  background-color: #FAF9F6;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+}
 
-  .resources-section {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .resource-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex: 1; 
-  }
+.title-travels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .resource-list a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  .resource-list li {
-    /* background: #e8f0f2; */
-    margin: 5px 0;
-    padding: 10px;
-    /* border-radius: 4px; */
-    text-align: left; 
-    color: black;
-    text-decoration: none;
-  }
-  
-  /* Travel section styles */
-  .travel-section {
-    margin-bottom: 20px;
-  }
-  
-  .travel-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .travel-list li {
-    /* background: #eaf4fc; */
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 4px;
-  }
-  
-  .blog-input-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .blog-input {
-    flex: 1;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .add-blog-button {
-    /* background-color: #0077b6; */
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 1em;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* .add-blog-button:hover {
-    background-color: #005f87;
-  } */
-  
-  .blog-item {
-    background: #eaf4fc;
-    padding: 10px;
-    border: 1px solid #d0e6f7;
-    border-radius: 4px;
-  }
-  
+.profiles-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; 
+  margin-bottom: 20px;
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+}
+
+.profile-img {
+  width: 250px; 
+  height: 250px; 
+  background-size: cover; 
+  background-position: center; 
+  border-radius: 10px; 
+  flex-shrink: 0; 
+}
+
+
+
+.profile-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333; 
+  margin-top: 10px;
+}
+
+
+.resources {
+  padding: 20px;
+  max-width: 900px; 
+  margin: 30px auto;
+}
+
+
+.travel {
+  font-size: 2.5rem;
+  color: #333; 
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Arial', sans-serif;
+}
+
+.resource-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px; 
+}
+
+.resource-text {
+  flex: 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+  margin-right: 30px;
+}
+
+.resource-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  margin-left: 50px;
+}
+
+.resource-list li {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.resource-list a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+.resource-list a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.resource-image img {
+  width: 200px; 
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}

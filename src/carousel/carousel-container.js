@@ -1,43 +1,50 @@
 import React from 'react';
-import Slider from 'react-slick';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-import photo1 from "../images/about/photo1.JPG";
-import photo2 from "../images/about/photo2.jpg";
-import photo3 from "../images/about/photo3.JPG";
-
-const ImageSource = [
-    { src: photo1, alt: "Photo 1", legend: "" },
-    { src: photo2, alt: "Photo 2", legend: "" },
-    { src: photo3, alt: "Photo 3", legend: "" },
+const slideImages = [
+  {
+    url: 'https://images.unsplash.com/photo-1509721434272-b79147e0e708?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    caption: 'Slide 1',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1506710507565-203b9f24669b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1536&q=80',
+    caption: 'Slide 2',
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1536987333706-fc9adfb10d91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    caption: 'Slide 3',
+  },
 ];
 
+const divStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundSize: 'cover',
+  height: '750px',
+};
+  
+
+const spanStyle = {
+  padding: '20px',
+  background: '#efefef',
+  color: '#000000',
+};
 
 const CarouselContainer = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-    };
-
-    return (
-        <div className="my-carousel">
-            <Slider {...settings}>
-                {ImageSource.map((img, index) => (
-                    <div key={index}>
-                        <img src={img.src} alt={img.alt} />
-                        {img.legend && <p>{img.legend}</p>}
-                    </div>
-                ))}
-            </Slider>
-        </div>
-    );
+  return (
+    <div className="slide-container">
+      <Slide autoplay={true} infinite={true} duration={3000} transitionDuration={500}>
+        {slideImages.map((slideImage, index) => (
+          <div key={index}>
+            <div style={{ ...divStyle, backgroundImage: `url(${slideImage.url})` }}>
+            </div>
+          </div>
+        ))}
+      </Slide>
+    </div>
+  );
 };
 
 export default CarouselContainer;

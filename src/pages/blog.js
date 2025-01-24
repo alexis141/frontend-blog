@@ -1,71 +1,136 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React from "react";
 import CreatePost from "../blog/create-post";
-import '../style/blog.css';
+import photo1 from "../images/blog/camoles.jpg";
+import photo2 from "../images/blog/indianajones.jpg";
+import photo3 from "../images/blog/reaching.jpg";
+import photo4 from "../images/blog/sunset.jpg";
+import photo5 from "../images/blog/red.jpg";
+import photo6 from "../images/blog/moterbike.JPG";
+import photo7 from "../images/blog/france.jpg";
+import photo8 from "../images/blog/belgium.jpg";
+import photo9 from "../images/blog/italy.jpg";
+import photo11 from "../images/blog/IMG_5810.PNG";
+import photo12 from "../images/blog/austria.jpg";
+import photo13 from "../images/blog/budapest.PNG";
 
-const Blog = ({ loggedInStatus }) => {
+import photoFly from "../images/blog/fly.jpg";
+import photoSleep from "../images/blog/sleep.jpg";
+
+import "../style/blog.css";
+
+const profiles = [
+  { img: photo11,
+    alt: "Photo 11",
+    text: "Honduras", },
+  { img: photo7,
+    alt: "Photo 7",
+    text: "France", },
+  { img: photo9,
+    alt: "Photo 9",
+    text: "Italy", },
+  { img: photo8,
+    alt: "Photo 8",
+    text: "Belgium", },
+  { img: photo12,
+    alt: "Photo 12",
+    text: "Austria", },
+  { img: photo1,
+    alt: "Photo 1",
+    text: "Jordan", },
+  { img: photo13,
+    alt: "Photo 13",
+    text: "Budapest", },
+  { img: photo2,
+    alt: "Photo 2",
+    text: "Cyprus", },
+  { img: photo3,
+    alt: "Photo 3",
+    text: "Indonesia", },
+  { img: photo5,
+    alt: "Photo 4",
+    text: "Taiwan", },
+  { img: photo4,
+    alt: "Photo 4",
+    text: "Philippines", },
+  { img: photo6,
+    alt: "Photo 4",
+    text: "Vietnam", },
+];
+
+export default function Blog({ loggedInStatus }) {
   return (
     <div className="blog-container">
-      <header className="blog-header">
-        <h1>My Travel and Resource Blog</h1>
-      </header>
+      <h2 className="title-travels">My Travels</h2>
+      <div className="profiles-container">
+        {profiles.map((profile, index) => (
+          <div key={index} className="profile-item">
+            <div className="profile-img"
+            style={{ backgroundImage: `url(${profile.img})` }}
+          ></div>
+            <div className="profile-text">
+              <p>{profile.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="resources">
+        <h1 className="travel">Resources</h1>
+        <section className="resources-section">
+          <div className="resource-category">
+            <div className="resource-text">
+              <h2>Resources to fly:</h2>
+              <ul className="resource-list">
+                <li>
+                  <a href="https://www.skyscanner.com/" target="_blank" rel="noopener noreferrer">
+                    Skyscanner
+                  </a>
+                </li>
+                <li>
+                  <a href="https://skiplagged.com/" target="_blank" rel="noopener noreferrer">
+                    Skiplagged
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.travelocity.com/" target="_blank" rel="noopener noreferrer">
+                    Travelocity
+                  </a>
+                </li>
+                <li>
+                  <a href="https://us.trip.com/?locale=en-us" target="_blank" rel="noopener noreferrer">
+                    Trip
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="resource-image">
+              <img src={photoFly} alt="Flying Resources" />
+            </div>
+          </div>
 
-      <section className="resources-section">
-        <h2>Resources to fly:</h2>
-        <ul className="resource-list">
-          <li>
-            <a href="https://www.skyscanner.com/" target="_blank" rel="noopener noreferrer">
-              Skyscanner
-            </a>
-          </li>
-          <li>
-            <a href="https://skiplagged.com/" target="_blank" rel="noopener noreferrer">
-              Skiplagged
-            </a>
-          </li>
-          <li>
-            <a href="https://www.travelocity.com/" target="_blank" rel="noopener noreferrer">
-              Travelocity
-            </a>
-          </li>
-          <li>
-            <a href="https://us.trip.com/?locale=en-us" target="_blank" rel="noopener noreferrer">
-              Trip
-            </a>
-          </li>
-        </ul>
+          <div className="resource-category">
+            <div className="resource-text">
+              <h2>Resources to sleep:</h2>
+              <ul className="resource-list">
+                <li>
+                  <a href="https://www.hostelworld.com/" target="_blank" rel="noopener noreferrer">
+                    Hostelworld
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.airbnb.com/" target="_blank" rel="noopener noreferrer">
+                    Airbnb
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="resource-image">
+              <img src={photoSleep} alt="Sleeping Resources" />
+            </div>
+          </div>
+        </section>
+      </div>
 
-        <h2>Resources to sleep:</h2>
-        <ul className="resource-list">
-          <li>
-            <a href="https://www.hostelworld.com/" target="_blank" rel="noopener noreferrer">
-              Hostelworld
-            </a>
-          </li>
-          <li>
-            <a href="https://www.airbnb.com/" target="_blank" rel="noopener noreferrer">
-              Airbnb
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section className="travel-section">
-        <h2>Where I've Traveled</h2>
-        <ul className="travel-list">
-          <li>Hawaii, USA</li>
-          <li>Utila, Honduras</li>
-          <li>Sumatra, Indonesia</li>
-          <li>Cyprus</li>
-          <li>Europe (9 countries)</li>
-          <li>Taiwan</li>
-        </ul>
-      </section>
-
-      {/* Conditionally render CreatePost */}
       {loggedInStatus === "LOGGED_IN" && <CreatePost />}
     </div>
   );
-};
-
-export default Blog;
+}

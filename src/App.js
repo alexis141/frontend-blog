@@ -43,12 +43,22 @@ export default class App extends Component {
     localStorage.setItem("isLoggedIn", false)
   }
 
+  //CHANGE TO localstorage.clear("LOGGED_IN") / set to false
+  // handleSuccessfulLogout() {
+  //   this.setState({
+  //     loggedInStatus: "NOT_LOGGED_IN"
+  //   });
+  //   localStorage.setItem("isLoggedIn", false)
+  // hanlde redirect, set state, redirect conditional in render statement
+  // }
+
   handleSuccessfulLogout() {
-    this.setState({
-      loggedInStatus: "NOT_LOGGED_IN"
+    this.setState({ 
+      loggedInStatus: "NOT_LOGGED_IN" 
     });
-    localStorage.setItem("isLoggedIn", false)
+    localStorage.removeItem("isLoggedIn"); 
   }
+  
 
   checkLoginStatus() {
     return axios
@@ -59,9 +69,6 @@ export default class App extends Component {
       const loggedIn = response.data.logged_in;
       const loggedInStatus = this.state.loggedInStatus;
 
-      // If loggedIn and status LOGGED_IN => return data
-      // If loggedIn statuse NOT_LOGGED_IN => update state
-      // If not loggedIn and status LOGGED_IN => update state
 
       if(loggedIn && loggedInStatus === "LOGGED_IN") {
         return loggedIn;
@@ -96,7 +103,6 @@ export default class App extends Component {
                 handleSignOut={this.handleSuccessfulLogout} 
               />
 
-              <h2>{this.state.loggedInStatus}</h2>
               <Routes>
 
                 <Route exact path="/" element={<Home />} />

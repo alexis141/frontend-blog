@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import "../style/login.css";
+import loginImg from "../images/login/FullSizeRender.jpg";
 import { Navigate } from "react-router";
-//import { Navigate } from "react-router-dom";
 
 
 export default class Login extends Component {
@@ -54,30 +54,15 @@ export default class Login extends Component {
         }
       );
 
-      //     console.log("Response received:", response.data);
+      // console.log("Response received:", response.data);
 
-      //     if (response.data.message === "success") {
-      //       alert("Login successful!");
-      //     } else {
-      //       alert("Invalid credentials. Please try again.");
-      //     }
-      //   } catch (error) {
-      //     console.error("Error during login:", error);
-      //     alert("Unable to connect to the server. Please try again later.");
-      //   }
-      // }
-
-      console.log("Response received:", response.data);
-
-      // Check the response message
       if (response.data.message === "success") {
         alert("Login successful!");
         // Optionally redirect to the homepage or dashboard
         //const navigate = useNavigate()
-        //this.props.navigate("/");
+        //navigate("/");
         this.props.handleSuccessfulLogin()
         this.handleSuccessNavigation()
-       
       } else {
         alert(response.data.error || "Invalid credentials. Please try again.");
       }
@@ -86,58 +71,55 @@ export default class Login extends Component {
       alert("Unable to connect to the server. Please try again later.");
     }
   }
-
-
-  //   if (response.data.status === "created") {
-  //     this.props.handleSuccessfulAuth();
-  //   } else {
-  //     this.setState({
-  //       errorText: "Wrong email or password"
-  //     });
-  //     this.props.handleUnsuccessfulAuth();
-  //   }
-  // } catch (error) {
-  //   // Handle errors inside the catch block
-  //   this.setState({
-  //     errorText: "An error occurred"
-  //   });
-  //   this.props.handleUnsuccessfulAuth();
-  // }
-  // }
-
+  
+  // handleLogout = () => {
+  //   this.setState({ loggedIn: false, redirectTo: "/" });
+  // };
+  
   render() {
     if (this.state.redirectTo) {
-      return <Navigate to={this.state.redirectTo} />
+      return <Navigate to={this.state.redirectTo} />;
     }
+
     return (
-      <div>
-        <h1>LOGIN TO ACCESS YOUR DASHBOARD</h1>
-
-        <div>{this.state.errorText}</div>
-
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Your password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
+      <div className="login-page-wrapper">
+        <div
+          className="left-column"
+          style={{
+            backgroundImage: `url(${loginImg})`,
+          }}
+        />
+        <div className="right-column">
+          <h1 className="login-dash">LOGIN</h1>
+          <div>{this.state.errorText}</div>
           <div>
-            <button type="submit">Login</button>
+            <form className="form" onSubmit={this.handleSubmit}>
+              <input
+                className="email"
+                type="email"
+                name="email"
+                placeholder="Your email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+              <input
+                className="password"
+                type="password"
+                name="password"
+                placeholder="Your password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <div>
+                <button className="submit" type="submit">
+                  Login
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
 }
-
-
+  

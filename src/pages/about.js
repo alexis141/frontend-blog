@@ -1,9 +1,9 @@
 import React from "react";
 import "../style/layouts.css";
 
-import photo1 from "../images/about/photo1.JPG";
-import photo2 from "../images/about/photo2.jpg";
-import photo3 from "../images/about/photo3.JPG";
+import photo1 from "../images/about/IMG_3425.jpg";
+import photo2 from "../images/about/photo3.JPG";
+import photo3 from "../images/about/IMG_6422.jpg";
 
 const photos = [
     {src: photo1, alt: "Photo 1"},
@@ -27,7 +27,7 @@ export default function() {
         
             <div className="about-me">
                 <h1 className="meet-me">Meet Me: How I Fell in Love with Traveling</h1>
-                <p>Hi, I’m Alexis! If you’re new here or just curious, let me share how my journey into traveling began and shaped my life.
+                <p>Hi, I’m Alexis! Let me share how my journey into traveling began and shaped my life.
                 My love for exploring the world really started when I moved to Hawaii for college. I studied biology and spent five amazing years living in paradise. Being surrounded by the ocean and vibrant cultures opened my eyes to the beauty of diversity—both in nature and people.
                 After college, my travels truly took off. My first time out of the country was volunteering for a month in Utila, Honduras, where I immersed myself in local life and marine conservation work. I returned to Hawaii and worked as a safety diver on a shark boat in Hawaii, an adventure that taught me courage, respect for these magnificent creatures, and how to thrive in challenging environments.
                 After leaving the shark boat, I spent two unforgettable months traveling through nine countries in Europe. It was a whirlwind of history, culture, and incredible food, from wandering ancient streets to soaking in breathtaking landscapes. That trip gave me a deep appreciation for the richness of the world and the joy of stepping out of my comfort zone.

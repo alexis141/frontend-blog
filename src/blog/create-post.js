@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import "../style/create.css";
+
 const CreatePost = () => {
   const [newBlog, setNewBlog] = useState(''); 
   const [blogs, setBlogs] = useState(localStorage.getItem("Blogs") ? localStorage.getItem("Blogs").split(","): []); 

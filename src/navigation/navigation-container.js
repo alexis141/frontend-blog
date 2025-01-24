@@ -8,6 +8,8 @@ const NavigationContainer = (props) => {
     const navigate = useNavigate();
 
     const handleSignOut = () => {
+        //clear loggedIn (local storage, or state wherever it's stored)
+        //redirect
         axios
         .delete("http://127.0.0.1:8001/logout", 
             { withCredentials: true })
@@ -45,9 +47,6 @@ const NavigationContainer = (props) => {
                     </div>
                 </div>
 
-                {/* <div className="title">
-                    <div>Lexi Lou Where Are You</div>
-                </div> */}
                 
                 <div className="right-side">
                     <div className="nav-link-wrapper">
