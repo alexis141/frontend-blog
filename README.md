@@ -9,7 +9,6 @@ Full CRUD (Create, Read, Update, Delete) functionality for content management
 
 Frontend: Developed using [React, plain HTML/CSS/JavaScript], delivering a dynamic and interactive user experience.
 Backend: Powered by [Python Flask], providing a reliable and scalable architecture
-Database: Integrated with [PostgreSQL] for efficient storage and retrieval of blog posts
 
 4. Clean, Minimalistic Styling
 
